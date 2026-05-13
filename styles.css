@@ -1,0 +1,55 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #07100c;
+}
+
+body {
+  display: grid;
+  place-items: stretch;
+  color: #e7ffd1;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+}
+
+canvas {
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background: #07100c;
+}
+
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.page {
+  place-items: center;
+}
+
+.page main {
+  width: min(720px, calc(100vw - 48px));
+}
+
+.page a {
+  color: #dfff9d;
+  text-decoration-color: rgba(223, 255, 157, 0.45);
+  text-underline-offset: 0.2em;
+}
+
+.page h1 {
+  margin: 24px 0 0;
+  font-size: clamp(2.75rem, 12vw, 8rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
