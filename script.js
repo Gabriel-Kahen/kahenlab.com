@@ -125,7 +125,7 @@ function resize() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   const narrow = window.innerWidth < 720;
-  cellSize = narrow ? 4 : 6;
+  cellSize = narrow ? 3 : 6;
   cols = Math.ceil(window.innerWidth / cellSize);
   rows = Math.ceil(window.innerHeight / cellSize);
   current = new Uint8Array(cols * rows);
@@ -147,8 +147,8 @@ function buildWords() {
   wordHitAreas = [];
   imprintMask.fill(0);
   const narrowLayout = window.innerWidth < 720;
-  const sidePadding = narrowLayout ? 16 : 24;
-  const rowGapUnits = narrowLayout ? 18 : 8;
+  const sidePadding = narrowLayout ? 14 : 24;
+  const rowGapUnits = narrowLayout ? 24 : 8;
   const unscaledMaxWidth = Math.max(
     ...navWords.map((item) => wordWidth(item.label)),
   );
