@@ -148,7 +148,7 @@ function buildWords() {
   imprintMask.fill(0);
   const narrowLayout = window.innerWidth < 720;
   const sidePadding = narrowLayout ? 14 : 24;
-  const rowGapUnits = narrowLayout ? 24 : 8;
+  const rowGapUnits = narrowLayout ? 32 : 13;
   const unscaledMaxWidth = Math.max(
     ...navWords.map((item) => wordWidth(item.label)),
   );
