@@ -227,7 +227,7 @@ function seed() {
     age[i] = 1;
   }
 
-  const noiseCount = Math.floor(cols * rows * 0.038);
+  const noiseCount = Math.floor(cols * rows * 0.052);
   for (let i = 0; i < noiseCount; i += 1) {
     const x = Math.floor(Math.random() * cols);
     const y = Math.floor(Math.random() * rows);
