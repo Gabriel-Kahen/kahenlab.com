@@ -227,27 +227,10 @@ function seed() {
     age[i] = 1;
   }
 
-  const edgeBand = Math.max(10, Math.floor(Math.min(cols, rows) * 0.22));
-  const noiseCount = Math.floor(cols * rows * 0.032);
+  const noiseCount = Math.floor(cols * rows * 0.038);
   for (let i = 0; i < noiseCount; i += 1) {
-    const side = Math.floor(Math.random() * 4);
-    let x = 0;
-    let y = 0;
-
-    if (side === 0) {
-      x = Math.floor(Math.random() * cols);
-      y = Math.floor(Math.random() * edgeBand);
-    } else if (side === 1) {
-      x = Math.floor(Math.random() * cols);
-      y = rows - 1 - Math.floor(Math.random() * edgeBand);
-    } else if (side === 2) {
-      x = Math.floor(Math.random() * edgeBand);
-      y = Math.floor(Math.random() * rows);
-    } else {
-      x = cols - 1 - Math.floor(Math.random() * edgeBand);
-      y = Math.floor(Math.random() * rows);
-    }
-
+    const x = Math.floor(Math.random() * cols);
+    const y = Math.floor(Math.random() * rows);
     setInitialCell(x, y);
   }
 
