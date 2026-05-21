@@ -295,7 +295,7 @@ function step(time) {
 
 function draw() {
   const compact = cellSize <= 3;
-  const cellInset = compact ? 0 : 1;
+  const cellInset = 1;
   const cellFillSize = Math.max(1, cellSize - cellInset * 2);
 
   ctx.fillStyle = "#030806";
