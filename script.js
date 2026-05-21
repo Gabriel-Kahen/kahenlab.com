@@ -294,10 +294,14 @@ function step(time) {
 }
 
 function draw() {
-  ctx.fillStyle = "#030806";
+  const compact = cellSize <= 3;
+  const cellInset = compact ? 0 : 1;
+  const cellFillSize = Math.max(1, cellSize - cellInset * 2);
+
+  ctx.fillStyle = compact ? "#010503" : "#030806";
   ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
 
-  ctx.fillStyle = "rgba(52, 78, 63, 0.22)";
+  ctx.fillStyle = compact ? "rgba(78, 128, 84, 0.32)" : "rgba(52, 78, 63, 0.22)";
   for (let x = 0; x < cols; x += 1) {
     ctx.fillRect(x * cellSize, 0, 1, window.innerHeight);
   }
@@ -311,40 +315,40 @@ function draw() {
       if (imprintMask[i] === 1) continue;
       if (current[i] !== 1 && age[i] === 0) continue;
       const heat = Math.min(1, age[i] / 110);
-      const alpha = current[i] ? 0.44 : 0.11 * heat;
-      const red = Math.round(128 + 64 * heat);
-      const green = Math.round(94 + 56 * heat);
-      const blue = Math.round(60 + 24 * heat);
+      const alpha = current[i] ? (compact ? 0.82 : 0.44) : (compact ? 0.2 : 0.11) * heat;
+      const red = Math.round((compact ? 192 : 128) + (compact ? 52 : 64) * heat);
+      const green = Math.round((compact ? 112 : 94) + (compact ? 96 : 56) * heat);
+      const blue = Math.round((compact ? 44 : 60) + (compact ? 72 : 24) * heat);
       ctx.fillStyle = `rgba(${red}, ${green}, ${blue}, ${alpha})`;
       ctx.fillRect(
-        x * cellSize + 1,
-        y * cellSize + 1,
-        Math.max(1, cellSize - 2),
-        Math.max(1, cellSize - 2),
+        x * cellSize + cellInset,
+        y * cellSize + cellInset,
+        cellFillSize,
+        cellFillSize,
       );
     }
   }
 
-  ctx.shadowColor = "rgba(191, 255, 144, 0.7)";
-  ctx.shadowBlur = Math.max(6, cellSize * 1.6);
+  ctx.shadowColor = compact ? "rgba(160, 255, 72, 0.95)" : "rgba(191, 255, 144, 0.7)";
+  ctx.shadowBlur = compact ? 9 : Math.max(6, cellSize * 1.6);
   for (const i of imprint) {
     const x = i % cols;
     const y = Math.floor(i / cols);
-    ctx.fillStyle = "#dfff9d";
+    ctx.fillStyle = compact ? "#baff55" : "#dfff9d";
     ctx.fillRect(
-      x * cellSize + 1,
-      y * cellSize + 1,
-      Math.max(1, cellSize - 2),
-      Math.max(1, cellSize - 2),
+      x * cellSize + cellInset,
+      y * cellSize + cellInset,
+      cellFillSize,
+      cellFillSize,
     );
   }
   ctx.shadowBlur = 0;
 
-  ctx.fillStyle = "rgba(255, 255, 229, 0.92)";
+  ctx.fillStyle = compact ? "rgba(255, 255, 214, 0.96)" : "rgba(255, 255, 229, 0.92)";
   for (const i of imprint) {
     const x = i % cols;
     const y = Math.floor(i / cols);
-    const inset = Math.max(2, Math.floor(cellSize * 0.28));
+    const inset = compact ? 1 : Math.max(2, Math.floor(cellSize * 0.28));
     ctx.fillRect(
       x * cellSize + inset,
       y * cellSize + inset,
